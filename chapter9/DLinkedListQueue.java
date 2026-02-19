@@ -1,7 +1,6 @@
 package chapter9;
 
 import my.util.DLinkedList;
-import my.util.DNode;
 
 public class DLinkedListQueue<T> implements Queue<T> {
 
@@ -13,19 +12,19 @@ public class DLinkedListQueue<T> implements Queue<T> {
 
     @Override
     public void enqueue(T item) {
-        // TODO (enqueue at tail)
+        list.add(item);
     }
 
     @Override
     public T dequeue() throws Exception {
         // TODO (dequeue from head using removeFirst())
-        return null;
+        return list.removeFirst().getData();
     }
 
     @Override
     public T front() throws Exception {
         // TODO (peek at head)
-        return null;
+        return list.get(0).getData();
     }
 
     @Override
