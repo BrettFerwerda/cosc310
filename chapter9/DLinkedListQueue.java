@@ -17,13 +17,11 @@ public class DLinkedListQueue<T> implements Queue<T> {
 
     @Override
     public T dequeue() throws Exception {
-        // TODO (dequeue from head using removeFirst())
         return list.removeFirst().getData();
     }
 
     @Override
     public T front() throws Exception {
-        // TODO (peek at head)
         return list.get(0).getData();
     }
 
