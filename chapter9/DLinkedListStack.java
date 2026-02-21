@@ -12,21 +12,18 @@ public class DLinkedListStack<T> implements Stack<T> {
 
     @Override
     public void push(T item) {
-        // TODO (use tail as the top)
+        // tail is top
         list.add(item);
     }
 
     @Override
     public T pop() throws Exception {
-        // TODO
-       
         return list.removeLast().getData();
     }
 
     @Override
     public T top() throws Exception {
-        // TODO
-        return list.get(list.size()-1).getData();
+        return list.get(list.size() - 1).getData();
     }
 
     @Override
