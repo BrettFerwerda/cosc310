@@ -7,6 +7,7 @@ public class SortedArrayListPriorityQueue<T> implements PriorityQueue<T> {
     private static class Entry<T> implements Comparable<Entry<T>> {
         final int priority;
         final T data;
+
         Entry(int priority, T data) {
             this.priority = priority;
             this.data = data;
@@ -26,21 +27,18 @@ public class SortedArrayListPriorityQueue<T> implements PriorityQueue<T> {
 
     @Override
     public void enqueue(int priority, T data) {
-        // TODO: insert so list is sorted by priority ASC (lower number is higher priority)
         list.add(new Entry<>(priority, data));
         list.sort(null);
     }
 
     @Override
     public T dequeue() throws Exception {
-        // TODO: remove index 0
         return list.remove(0).data;
     }
 
     @Override
     public T front() throws Exception {
-        // TODO: return index 0
-        return list.getFirst().data;
+        return list.get(0).data;
     }
 
     @Override
@@ -53,3 +51,5 @@ public class SortedArrayListPriorityQueue<T> implements PriorityQueue<T> {
         return list.isEmpty();
     }
 }
+
+
