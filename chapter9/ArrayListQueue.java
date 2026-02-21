@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class ArrayListQueue<T> implements Queue<T> {
 
-    // Circular-buffer queue stored in an ArrayList.
     private ArrayList<T> buffer;
-    private int head; // index of current front
-    private int tail; // index of next insertion position
+    private int head;
+    private int tail;
     private int size;
 
     public ArrayListQueue() {
@@ -28,7 +27,7 @@ public class ArrayListQueue<T> implements Queue<T> {
 
     @Override
     public T dequeue() throws Exception {
-        // TODO - check for empty queue
+        if (isEmpty()) throw new Exception("Queue empty");
         T item = buffer.get(head);
         size--;
         head = (head + 1) % buffer.size();
@@ -37,7 +36,7 @@ public class ArrayListQueue<T> implements Queue<T> {
 
     @Override
     public T front() throws Exception {
-        // TODO
+        if (isEmpty()) throw new Exception("Queue empty");
         return buffer.get(head);
     }
 
@@ -52,21 +51,18 @@ public class ArrayListQueue<T> implements Queue<T> {
     }
 
     private void ensureCapacity() {
-        // TODO: if needed > buffer.size(), double capacity and re-center head at 0
-        if (size < buffer.size())
-            return;
+        if (size < buffer.size()) return;
 
-        // resize and recenter
         int oldcap = buffer.size();
-        ArrayList<T> bigbuffer = new ArrayList<>(oldcap*2);
-        for (int i = 0; i < oldcap*2; i++) {
-            bigbuffer.add(null);    
-        }
-        for (int i=0; i<oldcap; i++) {
-            bigbuffer.set(i,buffer.get(head));
+        ArrayList<T> bigbuffer = new ArrayList<>(oldcap * 2);
+        for (int i = 0; i < oldcap * 2; i++) bigbuffer.add(null);
+
+        for (int i = 0; i < oldcap; i++) {
+            bigbuffer.set(i, buffer.get(head));
             head = (head + 1) % oldcap;
         }
-        buffer = bigbuffer; // the "old" swaperoo trick
+
+        buffer = bigbuffer;
         head = 0;
         tail = oldcap;
     }
