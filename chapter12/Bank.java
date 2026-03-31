@@ -16,7 +16,7 @@ public class Bank
       Constructs a bank with no customers.
    */
    public Bank()
-   {  
+   {      // this is my awesome bank class!
       customers = new ArrayList<Customer>();
    }
    
@@ -32,7 +32,11 @@ public class Bank
       {  
          int number = in.nextInt();
          int pin = in.nextInt();
-         Customer c = new Customer(number, pin);
+         String checkAcct = in.next();
+         double checkBalance = in.nextDouble();
+         String saveAcct = in.next();
+         double saveBalance = in.nextDouble();
+         Customer c = new Customer(number, pin, checkAcct, checkBalance, saveAcct, saveBalance);
          addCustomer(c);
       }
       in.close();
